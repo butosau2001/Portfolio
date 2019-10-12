@@ -12,55 +12,60 @@ import { Container } from "./styles";
 import Sidebar from "../../components/Sidebar";
 
 import HomePage from "../HomePage";
+import ProjectsPage from "../ProjectsPage";
+import ContactPage from "../ContactPage";
 
 export default function MainPage() {
-  const [selectedPage, setSelectedPage] = useState(1);
-  const [route, setRoute] = useState("/");
+  const [location, setLocation] = useState(
+    localStorage.getItem("current_path") || "/"
+  );
 
-  function handleClick(id, route) {
-    setSelectedPage(id);
-    setRoute(route);
+  function handleClick(route) {
+    setLocation(route);
+    localStorage.setItem("current_path", route);
   }
 
   function redirect() {
-    return <Redirect to={route} />;
+    return <Redirect to={location} />;
   }
 
   const buttons = [
     {
       key: 1,
       title: "HOME",
-      icon: (
-        <MdHome color={selectedPage === 1 ? "#1976D2" : "#888"} size="2vw" />
-      ),
-      onPress: () => handleClick(1, "/")
+      icon: <MdHome color={location === "/" ? "#1976D2" : "#888"} size="2vw" />,
+      onPress: () => handleClick("/")
     },
     {
       key: 2,
       title: "PROJECTS",
       icon: (
         <MdRemoveRedEye
-          color={selectedPage === 2 ? "#1976D2" : "#888"}
+          color={location === "/projects" ? "#1976D2" : "#888"}
           size="2vw"
         />
       ),
-      onPress: () => handleClick(2, "/projects")
+      onPress: () => handleClick("/projects")
     },
     {
       key: 3,
       title: "CONTACT",
       icon: (
-        <MdEmail color={selectedPage === 3 ? "#1976D2" : "#888"} size="2vw" />
+        <MdEmail
+          color={location === "/contact" ? "#1976D2" : "#888"}
+          size="2vw"
+        />
       ),
-      onPress: () => handleClick(3, "/contact")
+      onPress: () => handleClick("/contact")
     }
   ];
+
   return (
     <Container>
       <div>
-        <Sidebar buttons={buttons}></Sidebar>
+        <Sidebar buttons={buttons} />
       </div>
-      <div class="page">
+      <div className="page">
         <Router>
           {redirect()}
           <Switch>
@@ -68,14 +73,10 @@ export default function MainPage() {
               <HomePage />
             </Route>
             <Route path="/projects">
-              <div>
-                <p>projects</p>
-              </div>
+              <ProjectsPage />
             </Route>
             <Route path="/contact">
-              <div>
-                <p>contact</p>
-              </div>
+              <ContactPage />
             </Route>
           </Switch>
         </Router>

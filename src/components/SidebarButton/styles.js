@@ -23,6 +23,7 @@ export const Container = styled.div`
     transition: opacity 0.2s ease-out;
     font-size: 1vw;
     font-weight: bold;
+    color: #aaa;
   }
 
   :hover {
@@ -37,6 +38,8 @@ export const Container = styled.div`
 
       font-size: 1vw;
       font-weight: bold;
+
+      color: #aaa;
     }
   }
 `;

@@ -8,6 +8,8 @@ export const Container = styled.div`
   }
 
   .page {
-    padding: 1rem;
+    position: relative;
+    display: flex;
+    flex: 1;
   }
 `;
