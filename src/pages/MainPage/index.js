@@ -1,14 +1,29 @@
 import React, { useState } from "react";
 import { MdHome, MdRemoveRedEye, MdEmail } from "react-icons/md";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect
+} from "react-router-dom";
+
+import { Container } from "./styles";
 
 import Sidebar from "../../components/Sidebar";
 
+import HomePage from "../HomePage";
+
 export default function MainPage() {
   const [selectedPage, setSelectedPage] = useState(1);
+  const [route, setRoute] = useState("/");
 
   function handleClick(id, route) {
-    setSelectedPage(1);
+    setSelectedPage(id);
+    setRoute(route);
+  }
+
+  function redirect() {
+    return <Redirect to={route} />;
   }
 
   const buttons = [
@@ -16,9 +31,9 @@ export default function MainPage() {
       key: 1,
       title: "HOME",
       icon: (
-        <MdHome color={selectedPage === 1 ? "#1976D2" : "#888"} size="2em" />
+        <MdHome color={selectedPage === 1 ? "#1976D2" : "#888"} size="2vw" />
       ),
-      onPress: () => setSelectedPage(1)
+      onPress: () => handleClick(1, "/")
     },
     {
       key: 2,
@@ -26,36 +41,45 @@ export default function MainPage() {
       icon: (
         <MdRemoveRedEye
           color={selectedPage === 2 ? "#1976D2" : "#888"}
-          size="2em"
+          size="2vw"
         />
       ),
-      onPress: () => setSelectedPage(2)
+      onPress: () => handleClick(2, "/projects")
     },
     {
       key: 3,
       title: "CONTACT",
       icon: (
-        <MdEmail color={selectedPage === 3 ? "#1976D2" : "#888"} size="2em" />
+        <MdEmail color={selectedPage === 3 ? "#1976D2" : "#888"} size="2vw" />
       ),
-      onPress: () => setSelectedPage(3)
+      onPress: () => handleClick(3, "/contact")
     }
   ];
   return (
-    <div>
-      <Sidebar buttons={buttons}></Sidebar>
-      <Router ref={input => (this.router = input)}>
-        <Switch>
-          <Route exact path="/">
-            <div>home</div>
-          </Route>
-          <Route path="/projects">
-            <div>projects</div>
-          </Route>
-          <Route path="/contact">
-            <div>contact</div>
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+    <Container>
+      <div>
+        <Sidebar buttons={buttons}></Sidebar>
+      </div>
+      <div class="page">
+        <Router>
+          {redirect()}
+          <Switch>
+            <Route exact path="/">
+              <HomePage />
+            </Route>
+            <Route path="/projects">
+              <div>
+                <p>projects</p>
+              </div>
+            </Route>
+            <Route path="/contact">
+              <div>
+                <p>contact</p>
+              </div>
+            </Route>
+          </Switch>
+        </Router>
+      </div>
+    </Container>
   );
 }

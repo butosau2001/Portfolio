@@ -21,9 +21,8 @@ export const Container = styled.div`
   p {
     opacity: 0;
     transition: opacity 0.2s ease-out;
-    font-size: 1.4vw;
+    font-size: 1vw;
     font-weight: bold;
-    font-family: Roboto;
   }
 
   :hover {
@@ -36,9 +35,8 @@ export const Container = styled.div`
       opacity: 1;
       transition: opacity 0.2s ease-in;
 
-      font-size: 1.4vw;
+      font-size: 1vw;
       font-weight: bold;
-      font-family: Roboto;
     }
   }
 `;
