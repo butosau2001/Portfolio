@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { MdHome, MdRemoveRedEye, MdEmail } from "react-icons/md";
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 import {
   BrowserRouter as Router,
   Switch,
@@ -16,6 +17,9 @@ import ProjectsPage from "../ProjectsPage";
 import ContactPage from "../ContactPage";
 
 export default function MainPage() {
+  const sel = "#1976D2";
+  const nsel = "#888";
+
   const [location, setLocation] = useState(
     localStorage.getItem("current_path") || "/"
   );
@@ -26,14 +30,14 @@ export default function MainPage() {
   }
 
   function redirect() {
-    return <Redirect to={location} />;
+    return <Redirect to={location} push />;
   }
 
   const buttons = [
     {
       key: 1,
       title: "HOME",
-      icon: <MdHome color={location === "/" ? "#1976D2" : "#888"} size="2vw" />,
+      icon: <MdHome color={location === "/" ? sel : nsel} size="2vw" />,
       onPress: () => handleClick("/")
     },
     {
@@ -41,7 +45,7 @@ export default function MainPage() {
       title: "PROJECTS",
       icon: (
         <MdRemoveRedEye
-          color={location === "/projects" ? "#1976D2" : "#888"}
+          color={location === "/projects" ? sel : nsel}
           size="2vw"
         />
       ),
@@ -50,37 +54,44 @@ export default function MainPage() {
     {
       key: 3,
       title: "CONTACT",
-      icon: (
-        <MdEmail
-          color={location === "/contact" ? "#1976D2" : "#888"}
-          size="2vw"
-        />
-      ),
+      icon: <MdEmail color={location === "/contact" ? sel : nsel} size="2vw" />,
       onPress: () => handleClick("/contact")
     }
   ];
 
   return (
-    <Container>
-      <div>
-        <Sidebar buttons={buttons} />
-      </div>
-      <div className="page">
-        <Router>
-          {redirect()}
-          <Switch>
-            <Route exact path="/">
-              <HomePage />
-            </Route>
-            <Route path="/projects">
-              <ProjectsPage />
-            </Route>
-            <Route path="/contact">
-              <ContactPage />
-            </Route>
-          </Switch>
-        </Router>
-      </div>
-    </Container>
+    <>
+      <Container>
+        <div>
+          <Sidebar buttons={buttons} />
+        </div>
+        <div className="page">
+          <Router>
+            {redirect()}
+            <Route
+              render={({ location: l }) =>
+                console.log(l) || (
+                  // <TransitionGroup className="page">
+                  //   <CSSTransition key={l.key} classNames="slide" timeout={300}>
+                  <Switch location={l}>
+                    <Route exact path="/">
+                      <HomePage />
+                    </Route>
+                    <Route path="/projects">
+                      <ProjectsPage />
+                    </Route>
+                    <Route path="/contact">
+                      <ContactPage />
+                    </Route>
+                  </Switch>
+                  //   </CSSTransition>
+                  // </TransitionGroup>
+                )
+              }
+            />
+          </Router>
+        </div>
+      </Container>
+    </>
   );
 }
