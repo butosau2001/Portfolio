@@ -12,4 +12,25 @@ export const Container = styled.div`
     display: flex;
     flex: 1;
   }
+
+  .loading {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+
+    @keyframes in {
+      from {
+        position: -100vw;
+      }
+    }
+  }
+
+  .hidden {
+    position: absolute;
+    visibility: hidden;
+  }
+`;
+
+export const PageContainer = styled.div`
+  display: flex;
 `;

@@ -10,6 +10,7 @@ const GlobalStyle = createGlobalStyle`
 
     height: 100vh;
     width: 100vw;
+    overflow:hidden;
 
     padding: 0;
     margin: 0;
