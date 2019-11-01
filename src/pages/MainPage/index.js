@@ -8,7 +8,7 @@ import {
   Redirect
 } from "react-router-dom";
 
-import { Container, PageContainer } from "./styles";
+import { Container } from "./styles";
 
 import Sidebar from "../../components/Sidebar";
 
@@ -26,19 +26,15 @@ export default function MainPage() {
     localStorage.getItem("current_path") || "/"
   );
 
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    setLoading(false);
+    // setLoading(false);
   }, []);
 
   function handleClick(route) {
-    setLoading(true);
     setLocation(route);
     localStorage.setItem("current_path", route);
-    setTimeout(() => {
-      setLoading(false);
-    }, 2000);
   }
 
   function redirect() {
@@ -87,19 +83,13 @@ export default function MainPage() {
                     <>
                       <Switch location={l}>
                         <Route exact path="/">
-                          <PageContainer>
-                            <HomePage />
-                          </PageContainer>
+                          <HomePage />
                         </Route>
                         <Route path="/projects">
-                          <PageContainer>
-                            <ProjectsPage />
-                          </PageContainer>
+                          <ProjectsPage />
                         </Route>
                         <Route path="/contact">
-                          <PageContainer>
-                            <ContactPage />
-                          </PageContainer>
+                          <ContactPage />
                         </Route>
                       </Switch>
                     </>
