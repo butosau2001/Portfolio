@@ -17,12 +17,6 @@ export const Container = styled.div`
     display: flex;
     height: 100vh;
     width: 100vw;
-
-    @keyframes in {
-      from {
-        position: -100vw;
-      }
-    }
   }
 
   .hidden {
