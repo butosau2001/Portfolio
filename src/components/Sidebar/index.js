@@ -2,7 +2,9 @@ import React from "react";
 
 import SidebarButton from "../SidebarButton";
 
-import { Container } from "./styles";
+import { Container, ButtonContainer } from "./styles";
+
+import { FaGithub, FaLinkedin } from "react-icons/all";
 
 export default function Sidebar(props) {
   return (
@@ -19,6 +21,20 @@ export default function Sidebar(props) {
       ) : (
         <></>
       )}
+      <div className="absolute">
+        <ButtonContainer
+          onClick={() => window.open("https://github.com/butosau2001/")}
+        >
+          <FaGithub size={20} className="icon" />
+        </ButtonContainer>
+        <ButtonContainer
+          onClick={() =>
+            window.open("https://www.linkedin.com/in/bruno-borges-133564196")
+          }
+        >
+          <FaLinkedin size={20} className="icon" />
+        </ButtonContainer>
+      </div>
     </Container>
   );
 }

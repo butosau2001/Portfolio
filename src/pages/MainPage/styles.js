@@ -25,6 +25,13 @@ export const Container = styled.div`
   }
 `;
 
-export const PageContainer = styled.div`
-  display: flex;
+// export const PageContainer = styled.div`
+//   display: flex;
+//   width: 100vw;
+// `;
+
+export const ButtonContainer = styled.div`
+  position: absolute;
+  left: 0;
+  bottom: 0;
 `;
