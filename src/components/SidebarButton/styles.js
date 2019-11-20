@@ -21,25 +21,31 @@ export const Container = styled.div`
   p {
     opacity: 0;
     transition: opacity 0.2s ease-out;
-    font-size: 1vw;
+    font-size: calc(1vw + 0.35rem);
     font-weight: bold;
     color: #aaa;
   }
 
-  :hover {
-    div {
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-    }
+  @media (max-width: 576px) {
+    margin: auto 1rem;
+  }
 
-    p {
-      opacity: 1;
-      transition: opacity 0.2s ease-in;
+  @media (hover: hover) {
+    :hover {
+      div {
+        opacity: 0;
+        transition: opacity 0.2s ease-out;
+      }
 
-      font-size: 1vw;
-      font-weight: bold;
+      p {
+        opacity: 1;
+        transition: opacity 0.2s ease-in;
 
-      color: #aaa;
+        font-size: calc(1vw + 0.35rem);
+        font-weight: bold;
+
+        color: #aaa;
+      }
     }
   }
 `;

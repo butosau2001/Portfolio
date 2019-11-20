@@ -13,22 +13,53 @@ export const Container = styled.div`
     flex: 1;
   }
 
-  .loading {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-  }
-
   .hidden {
     position: absolute;
     visibility: hidden;
   }
-`;
 
-// export const PageContainer = styled.div`
-//   display: flex;
-//   width: 100vw;
-// `;
+  .absolute {
+    position: absolute;
+    bottom: 1vw;
+    right: 1vw;
+  }
+
+  .slide-enter-active {
+    animation-name: slideEnter;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  .slide-exit-active {
+    animation-name: slideExit;
+    animation-duration: 0.3s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slideEnter {
+    from {
+      transform: translateX(-100vw);
+    }
+    to {
+      transform: translateX(0vw);
+    }
+  }
+
+  @keyframes slideExit {
+    from {
+      transform: translateX(0vw);
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: column;
+  }
+`;
 
 export const ButtonContainer = styled.div`
   position: absolute;

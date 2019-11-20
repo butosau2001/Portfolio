@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   position: fixed;
   height: 100vh;
-  width: 6vw;
+  width: 10vw;
   background-color: #333;
 
   display: flex;
@@ -16,22 +16,30 @@ export const Container = styled.div`
     position: absolute;
     left: 0;
     bottom: 2vw;
-    width: 6vw;
+    width: 10vw;
+  }
+
+  @media (max-width: 576px) {
+    flex-direction: row;
+    height: 10vh;
+    width: 100vw;
   }
 `;
 
 export const ButtonContainer = styled.div`
-  margin: 1rem 0 0 2vw;
+  margin: auto 0 auto 2vw;
 
   .icon {
     color: #888;
   }
 
-  :hover {
-    cursor: pointer;
+  @media (hover: hover) {
+    :hover {
+      cursor: pointer;
 
-    .icon {
-      color: #1976d2;
+      .icon {
+        color: #1976d2;
+      }
     }
   }
 `;

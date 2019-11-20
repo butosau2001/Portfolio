@@ -21,20 +21,22 @@ export default function Sidebar(props) {
       ) : (
         <></>
       )}
-      <div className="absolute">
-        <ButtonContainer
-          onClick={() => window.open("https://github.com/butosau2001/")}
-        >
-          <FaGithub size={20} className="icon" />
-        </ButtonContainer>
-        <ButtonContainer
-          onClick={() =>
-            window.open("https://www.linkedin.com/in/bruno-borges-133564196")
-          }
-        >
-          <FaLinkedin size={20} className="icon" />
-        </ButtonContainer>
-      </div>
+      {window.innerWidth > 576 && (
+        <div className="absolute">
+          <ButtonContainer
+            onClick={() => window.open("https://github.com/butosau2001/")}
+          >
+            <FaGithub size="2vw" className="icon" />
+          </ButtonContainer>
+          <ButtonContainer
+            onClick={() =>
+              window.open("https://www.linkedin.com/in/bruno-borges-133564196")
+            }
+          >
+            <FaLinkedin size="2vw" className="icon" />
+          </ButtonContainer>
+        </div>
+      )}
     </Container>
   );
 }

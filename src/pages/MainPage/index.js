@@ -11,12 +11,11 @@ import {
 import { Container } from "./styles";
 
 import Sidebar from "../../components/Sidebar";
+import FAB from "../../components/FAB";
 
 import HomePage from "../HomePage";
 import ProjectsPage from "../ProjectsPage";
 import ContactPage from "../ContactPage";
-
-import "./transition.css";
 
 export default function MainPage() {
   const sel = "#1976D2";
@@ -26,10 +25,10 @@ export default function MainPage() {
     localStorage.getItem("current_path") || "/"
   );
 
-  // const [loading, setLoading] = useState(true);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    // setLoading(false);
+    setLoaded(true);
   }, []);
 
   function handleClick(route) {
@@ -45,7 +44,12 @@ export default function MainPage() {
     {
       key: 1,
       title: "HOME",
-      icon: <MdHome color={location === "/" ? sel : nsel} size="2vw" />,
+      icon: (
+        <MdHome
+          color={location === "/" ? sel : nsel}
+          size={window.innerWidth < 576 ? "3vh" : "2vw"}
+        />
+      ),
       onPress: () => handleClick("/")
     },
     {
@@ -54,7 +58,7 @@ export default function MainPage() {
       icon: (
         <MdRemoveRedEye
           color={location === "/projects" ? sel : nsel}
-          size="2vw"
+          size={window.innerWidth < 576 ? "3vh" : "2vw"}
         />
       ),
       onPress: () => handleClick("/projects")
@@ -62,7 +66,12 @@ export default function MainPage() {
     {
       key: 3,
       title: "CONTACT",
-      icon: <MdEmail color={location === "/contact" ? sel : nsel} size="2vw" />,
+      icon: (
+        <MdEmail
+          color={location === "/contact" ? sel : nsel}
+          size={window.innerWidth < 576 ? "3vh" : "2vw"}
+        />
+      ),
       onPress: () => handleClick("/contact")
     }
   ];
@@ -71,34 +80,45 @@ export default function MainPage() {
     <>
       <Container>
         <div>
-          <Sidebar buttons={buttons} />
+          <Sidebar buttons={buttons} className="sidebar" />
         </div>
         <div className="page">
           <Router>
             {redirect()}
             <Route
               render={({ location: l }) => (
-                <TransitionGroup className="page">
-                  <CSSTransition key={l.key} classNames="slide" timeout={300}>
-                    <>
-                      <Switch location={l}>
-                        <Route exact path="/">
-                          <HomePage />
-                        </Route>
-                        <Route path="/projects">
-                          <ProjectsPage />
-                        </Route>
-                        <Route path="/contact">
-                          <ContactPage />
-                        </Route>
-                      </Switch>
-                    </>
-                  </CSSTransition>
-                </TransitionGroup>
+                <>
+                  <TransitionGroup
+                    className="page"
+                    enter={loaded}
+                    exit={loaded}
+                  >
+                    <CSSTransition
+                      key={l.key}
+                      classNames={"slide"}
+                      timeout={300}
+                    >
+                      <>
+                        <Switch location={l}>
+                          <Route exact path="/">
+                            <HomePage />
+                          </Route>
+                          <Route path="/projects">
+                            <ProjectsPage />
+                          </Route>
+                          <Route path="/contact">
+                            <ContactPage />
+                          </Route>
+                        </Switch>
+                      </>
+                    </CSSTransition>
+                  </TransitionGroup>
+                </>
               )}
             />
           </Router>
         </div>
+        {window.innerWidth < 576 && <FAB id="absolute" />}
       </Container>
     </>
   );
