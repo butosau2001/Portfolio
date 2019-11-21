@@ -28,7 +28,7 @@ export default function MainPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    setLoaded(true);
+    setTimeout(() => setLoaded(true), 100);
   }, []);
 
   function handleClick(route) {
@@ -96,7 +96,7 @@ export default function MainPage() {
                     <CSSTransition
                       key={l.key}
                       classNames={"slide"}
-                      timeout={300}
+                      timeout={350}
                     >
                       <>
                         <Switch location={l}>

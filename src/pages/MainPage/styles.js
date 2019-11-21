@@ -25,6 +25,9 @@ export const Container = styled.div`
   }
 
   .slide-enter-active {
+    position: absolute;
+    width: 90vw;
+    height: 100vh;
     animation-name: slideEnter;
     animation-duration: 0.3s;
     animation-timing-function: linear;
@@ -32,10 +35,31 @@ export const Container = styled.div`
   }
 
   .slide-exit-active {
+    position: absolute;
+    width: 90vw;
+    height: 100vh;
     animation-name: slideExit;
+    animation-delay: 0.05s;
     animation-duration: 0.3s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
+  }
+
+  @media (max-width: 576px) {
+    .page {
+      width: 100vw;
+      height: 90vh;
+    }
+
+    .slide-enter-active {
+      width: 100vw;
+      height: 90vh;
+    }
+
+    .slide-exit-active {
+      height: 90vh;
+      width: 100vw;
+    }
   }
 
   @keyframes slideEnter {

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 1rem;
+  display: flex;
+  flex: 1;
+
+  justify-content: center;
+  align-items: center;
+
+  background-color: #cc110c;
 `;
