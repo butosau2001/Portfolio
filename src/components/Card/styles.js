@@ -20,9 +20,11 @@ export const Container = styled.div`
 
   padding: 0 0.5em;
 
-  :hover {
-    background-color: #555;
-    color: #aaa;
+  @media (hover: hover) {
+    :hover {
+      background-color: #555;
+      color: #aaa;
+    }
   }
 
   h1 {
