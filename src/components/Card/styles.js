@@ -22,6 +22,7 @@ export const Container = styled.div`
 
   @media (hover: hover) {
     :hover {
+      cursor: pointer;
       background-color: #555;
       color: #aaa;
     }
