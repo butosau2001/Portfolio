@@ -28,7 +28,6 @@ export default function MainPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
-    console.log(location);
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
@@ -85,7 +84,6 @@ export default function MainPage() {
         </div>
         <div className="page">
           <Router>
-            {redirect()}
             <Route
               render={({ location: l }) => (
                 <>
