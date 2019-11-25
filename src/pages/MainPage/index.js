@@ -1,21 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { MdHome, MdRemoveRedEye, MdEmail } from "react-icons/md";
-import { CSSTransition, TransitionGroup } from "react-transition-group";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
+
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+
+import Routes from "../../routes";
 
 import { Container } from "./styles";
 
 import Sidebar from "../../components/Sidebar";
 import FAB from "../../components/FAB";
-
-import HomePage from "../HomePage";
-import ProjectsPage from "../ProjectsPage";
-import ContactPage from "../ContactPage";
 
 export default function MainPage() {
   const sel = "#1976D2";
@@ -26,18 +19,22 @@ export default function MainPage() {
   );
 
   const [loaded, setLoaded] = useState(false);
+  const [redirect, setRedirect] = useState(true);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
-  function handleClick(route) {
-    setLocation(route);
-    localStorage.setItem("current_path", route);
+  function redirectPage() {
+    if (redirect) {
+      return <Redirect to={location} />;
+    }
   }
 
-  function redirect() {
-    return <Redirect to={location} push />;
+  function handleClick(route) {
+    setLocation(route);
+    setRedirect(true);
+    localStorage.setItem("current_path", route);
   }
 
   const buttons = [
@@ -84,35 +81,10 @@ export default function MainPage() {
         </div>
         <div className="page">
           <Router>
+            {redirectPage()}
             <Route
               render={({ location: l }) => (
-                <>
-                  <TransitionGroup
-                    className="page"
-                    enter={loaded}
-                    exit={loaded}
-                  >
-                    <CSSTransition
-                      key={l.key}
-                      classNames={"slide"}
-                      timeout={350}
-                    >
-                      <>
-                        <Switch location={l}>
-                          <Route exact path="/">
-                            <HomePage />
-                          </Route>
-                          <Route path="/projects">
-                            <ProjectsPage />
-                          </Route>
-                          <Route path="/contact">
-                            <ContactPage />
-                          </Route>
-                        </Switch>
-                      </>
-                    </CSSTransition>
-                  </TransitionGroup>
-                </>
+                <Routes location={l} loaded={loaded} />
               )}
             />
           </Router>
