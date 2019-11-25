@@ -28,6 +28,7 @@ export default function MainPage() {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    console.log(location);
     setTimeout(() => setLoaded(true), 100);
   }, []);
 
