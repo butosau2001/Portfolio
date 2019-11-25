@@ -10,7 +10,7 @@ import { Container } from "./styles";
 import Sidebar from "../../components/Sidebar";
 import FAB from "../../components/FAB";
 
-export default function MainPage() {
+export default function MainPage(props) {
   const sel = "#1976D2";
   const nsel = "#888";
 
@@ -19,7 +19,7 @@ export default function MainPage() {
   );
 
   const [loaded, setLoaded] = useState(false);
-  const [redirect, setRedirect] = useState(true);
+  const [redirect, setRedirect] = useState(false);
 
   useEffect(() => {
     setTimeout(() => setLoaded(true), 100);
