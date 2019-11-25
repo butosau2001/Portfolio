@@ -28,11 +28,12 @@ export function register(config) {
       // Our service worker won't work if PUBLIC_URL is on a different origin
       // from what our page is served on. This might happen if a CDN is used to
       // serve assets; see https://github.com/facebook/create-react-app/issues/2374
+      console.log("error");
       return;
     }
 
     window.addEventListener("load", () => {
-      const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
+      const swUrl = `${process.env.PUBLIC_URL}/sw.js`;
 
       if (isLocalhost) {
         // This is running on localhost. Let's check if a service worker still exists or not.
@@ -134,22 +135,22 @@ export function unregister() {
   }
 }
 
-export const registerServiceWorker = () => {
-  if ("serviceWorker" in navigator) {
-    window.addEventListener("load", function() {
-      navigator.serviceWorker
-        .register("/sw.js")
-        .then(function(registration) {
-          // Registration was successful
-          console.log(
-            "ServiceWorker registration successful with scope: ",
-            registration.scope
-          );
-        })
-        .catch(function(err) {
-          // registration failed :(
-          console.log("ServiceWorker registration failed: ", err);
-        });
-    });
-  }
-};
+// export const registerServiceWorker = () => {
+//   if ("serviceWorker" in navigator) {
+//     window.addEventListener("load", function() {
+//       navigator.serviceWorker
+//         .register("/sw.js")
+//         .then(function(registration) {
+//           // Registration was successful
+//           console.log(
+//             "ServiceWorker registration successful with scope: ",
+//             registration.scope
+//           );
+//         })
+//         .catch(function(err) {
+//           // registration failed :(
+//           console.log("ServiceWorker registration failed: ", err);
+//         });
+//     });
+//   }
+// };
