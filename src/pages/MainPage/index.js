@@ -6,14 +6,12 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Routes from "../../routes";
 
 import { Container } from "./styles";
+import { colors } from "../../globalStyles";
 
 import Sidebar from "../../components/Sidebar";
 import FAB from "../../components/FAB";
 
 export default function MainPage() {
-  const sel = "#1976D2";
-  const nsel = "#888";
-
   const [location, setLocation] = useState(window.location.pathname);
 
   const [redirect, setRedirect] = useState(false);
@@ -27,7 +25,6 @@ export default function MainPage() {
   function handleClick(route) {
     setRedirect(true);
     setLocation(route);
-    setTimeout(() => setRedirect(false), 500);
   }
 
   const buttons = [
@@ -36,7 +33,7 @@ export default function MainPage() {
       title: "HOME",
       icon: (
         <MdHome
-          color={location === "/" ? sel : nsel}
+          color={location === "/" ? colors.selected : colors.notSelected}
           size={window.innerWidth < 576 ? "3vh" : "2vw"}
         />
       ),
@@ -47,7 +44,9 @@ export default function MainPage() {
       title: "PROJECTS",
       icon: (
         <MdRemoveRedEye
-          color={location === "/projects" ? sel : nsel}
+          color={
+            location === "/projects" ? colors.selected : colors.notSelected
+          }
           size={window.innerWidth < 576 ? "3vh" : "2vw"}
         />
       ),
@@ -58,7 +57,7 @@ export default function MainPage() {
       title: "CONTACT",
       icon: (
         <MdEmail
-          color={location === "/contact" ? sel : nsel}
+          color={location === "/contact" ? colors.selected : colors.notSelected}
           size={window.innerWidth < 576 ? "3vh" : "2vw"}
         />
       ),

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import { colors } from "../../globalStyles";
+
 export const Container = styled.div`
   position: fixed;
   height: 100vh;
@@ -30,7 +32,7 @@ export const ButtonContainer = styled.div`
   margin: auto 0 auto 2vw;
 
   .icon {
-    color: #888;
+    color: ${colors.notSelected};
   }
 
   @media (hover: hover) {
@@ -38,7 +40,7 @@ export const ButtonContainer = styled.div`
       cursor: pointer;
 
       .icon {
-        color: #1976d2;
+        color: ${colors.selected};
       }
     }
   }
