@@ -10,31 +10,24 @@ import { Container } from "./styles";
 import Sidebar from "../../components/Sidebar";
 import FAB from "../../components/FAB";
 
-export default function MainPage(props) {
+export default function MainPage() {
   const sel = "#1976D2";
   const nsel = "#888";
 
-  const [location, setLocation] = useState(
-    localStorage.getItem("current_path") || "/"
-  );
+  const [location, setLocation] = useState(window.location.pathname);
 
-  const [loaded, setLoaded] = useState(false);
   const [redirect, setRedirect] = useState(false);
 
-  useEffect(() => {
-    setTimeout(() => setLoaded(true), 100);
-  }, []);
+  useEffect(() => {}, []);
 
   function redirectPage() {
-    if (redirect) {
-      return <Redirect to={location} />;
-    }
+    return <Redirect to={location} />;
   }
 
   function handleClick(route) {
-    setLocation(route);
     setRedirect(true);
-    localStorage.setItem("current_path", route);
+    setLocation(route);
+    setTimeout(() => setRedirect(false), 500);
   }
 
   const buttons = [
@@ -84,7 +77,7 @@ export default function MainPage(props) {
             {redirectPage()}
             <Route
               render={({ location: l }) => (
-                <Routes location={l} loaded={loaded} />
+                <Routes location={l} redirect={redirect} />
               )}
             />
           </Router>

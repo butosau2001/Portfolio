@@ -7,12 +7,6 @@ export const Container = styled.div`
     position: relative;
   }
 
-  .page {
-    position: relative;
-    display: flex;
-    flex: 1;
-  }
-
   .hidden {
     position: absolute;
     visibility: hidden;
@@ -24,25 +18,10 @@ export const Container = styled.div`
     right: 1vw;
   }
 
-  .slide-enter-active {
-    position: absolute;
-    width: 90vw;
-    height: 100vh;
-    animation-name: slideEnter;
-    animation-duration: 0.3s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
-  }
-
-  .slide-exit-active {
-    position: absolute;
-    width: 90vw;
-    height: 100vh;
-    animation-name: slideExit;
-    animation-delay: 0.05s;
-    animation-duration: 0.3s;
-    animation-timing-function: linear;
-    animation-fill-mode: forwards;
+  .page {
+    position: relative;
+    display: flex;
+    flex: 1;
   }
 
   @media (max-width: 576px) {
@@ -50,35 +29,6 @@ export const Container = styled.div`
       width: 100vw;
       height: 90vh;
     }
-
-    .slide-enter-active {
-      width: 100vw;
-      height: 90vh;
-    }
-
-    .slide-exit-active {
-      height: 90vh;
-      width: 100vw;
-    }
-  }
-
-  @keyframes slideEnter {
-    from {
-      transform: translateX(-100vw);
-    }
-    to {
-      transform: translateX(0vw);
-    }
-  }
-
-  @keyframes slideExit {
-    from {
-      transform: translateX(0vw);
-    }
-    to {
-      transform: translateX(100vw);
-    }
-  }
 
   @media (max-width: 576px) {
     flex-direction: column;
