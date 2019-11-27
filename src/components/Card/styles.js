@@ -20,7 +20,7 @@ export const Container = styled.div`
 
   padding: 0 0.5em;
 
-  @media (hover: hover) {
+  @media (min-width: 576px) {
     :hover {
       cursor: pointer;
       background-color: #555;

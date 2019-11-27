@@ -30,7 +30,7 @@ export const Container = styled.div`
     margin: auto 1rem;
   }
 
-  @media (hover: hover) {
+  @media (min-width: 576px) {
     :hover {
       div {
         opacity: 0;
