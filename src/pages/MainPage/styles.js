@@ -53,8 +53,8 @@ export const ModalContainer = styled.div`
 
   .link {
     cursor: pointer;
+
     h3 {
-      color: blue;
       text-decoration: underline;
     }
   }
@@ -63,15 +63,38 @@ export const ModalContainer = styled.div`
     position: absolute;
     bottom: 1rem;
     right: 1rem;
+
+    img {
+      width: 30vw;
+      height: calc(30vw / ${props => props.aspect});
+    }
   }
 
   @media (max-width: 576px) {
     .image {
       position: static;
+
+      img {
+        width: 50vw;
+        height: calc(50vw / ${props => props.aspect});
+      }
     }
 
     text-align: center;
     align-items: center;
+  }
+  @media (min-width: 576) {
+    @media (max-height: 450px) {
+      .link {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+      }
+
+      .image {
+        visibility: hidden;
+      }
+    }
   }
 `;
 

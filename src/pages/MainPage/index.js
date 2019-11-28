@@ -136,7 +136,7 @@ export default function MainPage() {
         >
           <Grow in={open}>
             {project && (
-              <ModalContainer>
+              <ModalContainer aspect={project.aspectRatio}>
                 <div>
                   <Title>{project.title}</Title>
                   <Subtitle>{project.subtitle}</Subtitle>
