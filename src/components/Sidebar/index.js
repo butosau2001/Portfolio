@@ -6,7 +6,11 @@ import { Container, ButtonContainer } from "./styles";
 
 import { FaGithub, FaLinkedin } from "react-icons/all";
 
+import useWindowSize from "../../data/resizeListener";
+
 export default function Sidebar(props) {
+  const [width] = useWindowSize();
+
   return (
     <Container>
       {props.buttons ? (
@@ -21,7 +25,7 @@ export default function Sidebar(props) {
       ) : (
         <></>
       )}
-      {window.innerWidth > 576 && (
+      {width > 576 && (
         <div className="absolute">
           <ButtonContainer
             onClick={() => window.open("https://github.com/butosau2001/")}

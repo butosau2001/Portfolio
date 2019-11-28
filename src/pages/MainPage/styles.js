@@ -78,21 +78,37 @@ export const ModalContainer = styled.div`
         width: 50vw;
         height: calc(50vw / ${props => props.aspect});
       }
+
+      @media (max-height: 420px) {
+        position: absolute;
+        visibility: hidden;
+      }
     }
 
     text-align: center;
     align-items: center;
-  }
-  @media (min-width: 576) {
-    @media (max-height: 450px) {
+
+    @media (max-height: 300px) {
       .link {
         position: absolute;
         top: 1rem;
         right: 1rem;
       }
+    }
+  }
 
+  @media (min-width: 576px) {
+    @media (max-height: 500px) {
       .image {
         visibility: hidden;
+      }
+    }
+
+    @media (max-height: 400px) {
+      .link {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
       }
     }
   }

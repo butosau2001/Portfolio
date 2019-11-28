@@ -23,6 +23,7 @@ import { colors } from "../../globalStyles";
 
 import Sidebar from "../../components/Sidebar";
 import FAB from "../../components/FAB";
+import useWindowSize from "../../data/resizeListener";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -40,6 +41,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function MainPage() {
   const classes = useStyles();
+  const [width] = useWindowSize();
 
   const [open, setOpen] = useState(false);
   const [redirect, setRedirect] = useState(false);
@@ -74,7 +76,7 @@ export default function MainPage() {
       icon: (
         <MdHome
           color={location === "/" ? colors.selected : colors.notSelected}
-          size={window.innerWidth < 576 ? "3vh" : "2vw"}
+          size={width < 576 ? "3vh" : "2vw"}
         />
       ),
       onPress: () => handleClick("/")
@@ -87,7 +89,7 @@ export default function MainPage() {
           color={
             location === "/projects" ? colors.selected : colors.notSelected
           }
-          size={window.innerWidth < 576 ? "3vh" : "2vw"}
+          size={width < 576 ? "3vh" : "2vw"}
         />
       ),
       onPress: () => handleClick("/projects")
@@ -98,7 +100,7 @@ export default function MainPage() {
       icon: (
         <MdEmail
           color={location === "/contact" ? colors.selected : colors.notSelected}
-          size={window.innerWidth < 576 ? "3vh" : "2vw"}
+          size={width < 576 ? "3vh" : "2vw"}
         />
       ),
       onPress: () => handleClick("/contact")
@@ -125,7 +127,7 @@ export default function MainPage() {
             />
           </Router>
         </div>
-        {window.innerWidth < 576 && <FAB id="absolute" />}
+        {width < 576 && <FAB id="absolute" />}
         <Modal
           className={classes.modal}
           open={open}
@@ -143,23 +145,14 @@ export default function MainPage() {
                   <Description>{project.description}</Description>
                 </div>
                 <div className="image">
-                  <img
-                    src={project.image}
-                    alt="Portfolio"
-                    height={Math.min(
-                      window.innerHeight * 0.2,
-                      window.innerWidth * 0.3
-                    )}
-                  />
+                  <img src={project.image} alt="Portfolio" />
                 </div>
                 <div className="link" onClick={() => window.open(project.link)}>
                   <Subtitle>
                     {project.link.includes("github")
                       ? "Ir para o GitHub"
                       : "Ir para o site"}
-                    <MdArrowForward
-                      size={window.innerWidth < 576 ? "0.7rem" : "1rem"}
-                    />
+                    <MdArrowForward size={width < 576 ? "0.7rem" : "1rem"} />
                   </Subtitle>
                 </div>
               </ModalContainer>
