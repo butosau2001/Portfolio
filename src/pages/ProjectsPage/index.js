@@ -3,10 +3,10 @@ import React from "react";
 import { Container } from "./styles";
 import CardList from "../../components/CardList";
 
-export default function ProjectsPage() {
+export default function ProjectsPage({ handleModal }) {
   return (
     <Container>
-      <CardList />
+      <CardList handleModal={handleModal} />
     </Container>
   );
 }

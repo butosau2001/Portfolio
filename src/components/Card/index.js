@@ -2,15 +2,15 @@ import React from "react";
 
 import { Container } from "./styles";
 
-export default function Card({ project }) {
+export default function Card({ project, handleModal, dimension }) {
   return (
     <Container
+      dimension={dimension}
       color={project.color}
-      image={project.uri}
-      onClick={() => window.open(project.link)}
+      onClick={() => handleModal(project) /*window.open(project.link)*/}
     >
       <h1>{project.title}</h1>
-      <h2>{project.description}</h2>
+      <h2>{project.subtitle}</h2>
     </Container>
   );
 }

@@ -4,9 +4,6 @@ export const Container = styled.div`
   display: flex;
   background-color: ${props => props.color};
 
-  background-image: ${props => `url(${props.image})` || "undefined"};
-  background-size: 100vh;
-
   flex: 1;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +11,8 @@ export const Container = styled.div`
 
   position: relative;
 
-  flex-basis: 20vw;
+  min-width: calc(80vw / ${props => Math.ceil(props.dimension)});
+  min-height: calc(100vh / ${props => Math.ceil(props.dimension)});
 
   transition: all 0.2s ease-in-out;
 
@@ -29,12 +27,12 @@ export const Container = styled.div`
   }
 
   h1 {
-    font-size: 3.5vw;
+    font-size: 2rem;
     text-decoration-line: underline;
   }
 
   h2 {
-    font-size: 1.2vw;
+    font-size: 1rem;
     text-align: center;
   }
 `;

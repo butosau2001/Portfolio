@@ -8,7 +8,7 @@ import ContactPage from "./pages/ContactPage";
 
 import { Container } from "./styles";
 
-export default function Routes({ location: l, redirect }) {
+export default function Routes({ location: l, redirect, handleModal }) {
   return (
     <Container redirect={redirect}>
       <TransitionGroup className="page">
@@ -19,7 +19,7 @@ export default function Routes({ location: l, redirect }) {
                 <HomePage />
               </Route>
               <Route path="/projects">
-                <ProjectsPage />
+                <ProjectsPage handleModal={handleModal} />
               </Route>
               <Route path="/contact">
                 <ContactPage />
