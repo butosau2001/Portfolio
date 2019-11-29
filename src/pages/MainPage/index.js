@@ -110,9 +110,7 @@ export default function MainPage() {
   return (
     <>
       <Container>
-        <div>
-          <Sidebar buttons={buttons} className="sidebar" />
-        </div>
+        <Sidebar buttons={buttons} className="sidebar" />
         <div className="page">
           <Router>
             {redirectPage()}

@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   position: fixed !important;
-  bottom: 2vw;
-  right: 2vw;
+  bottom: 2rem;
+  right: 2rem;
   border-radius: 50%;
 
   @keyframes rotateAnimationOpen {

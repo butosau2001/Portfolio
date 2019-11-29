@@ -5,6 +5,8 @@ export const Container = styled.div`
   padding: 1em 0;
   margin: 1rem auto;
 
+  width: 10vw;
+
   justify-content: center;
   align-items: center;
 

@@ -18,12 +18,18 @@ export const Container = styled.div`
 
   padding: 0 0.5em;
 
+  opacity: 1;
+
   @media (min-width: 576px) {
     :hover {
       cursor: pointer;
-      background-color: #555;
-      color: #aaa;
+      opacity: 0.6;
     }
+  }
+
+  @media (max-width: 576px) {
+    min-width: 100vw;
+    min-height: 0;
   }
 
   h1 {
