@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../globalStyles";
 
 export const Container = styled.div`
   display: flex;
@@ -7,5 +8,11 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #cc110c;
+  background-color: ${colors.background};
+`;
+
+export const TextContainer = styled.div`
+  width: 45vw;
+  justify-content: center;
+  text-align: center;
 `;

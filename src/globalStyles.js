@@ -21,5 +21,8 @@ export default GlobalStyle;
 
 export const colors = {
   selected: "#1976D2",
-  notSelected: "#888"
+  notSelected: "#888",
+
+  headerBackground: "#333",
+  background: "#4c4a4f"
 };

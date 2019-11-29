@@ -6,7 +6,7 @@ export const Container = styled.div`
   position: fixed;
   height: 100vh;
   width: 10vw;
-  background-color: #333;
+  background-color: ${colors.headerBackground};
 
   display: flex;
   flex-direction: column;

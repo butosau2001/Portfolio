@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../globalStyles";
 
 export const Container = styled.div`
   display: flex;
@@ -7,5 +8,5 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: #2300ff;
+  background-color: ${colors.background};
 `;
