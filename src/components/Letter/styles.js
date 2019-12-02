@@ -1,18 +1,39 @@
 import styled from "styled-components";
 
 export const Container = styled.span`
-  color: ${props => props.color};
-  user-select: none;
+  color: white;
   font-size: 3rem;
   font-weight: bold;
   display: inline-block;
 
-  @media (min-width: 576px) {
-    animation-name: ${props => (props.animate ? "rubberBand" : undefined)};
-    animation-duration: 1s;
-    animation-fill-mode: ease-in;
+  animation-name: grow;
+  animation-duration: 0.5s;
+  animation-delay: ${props => 0.1 * props.index}s;
 
-    color: ${props => props.animate && "black"};
+  padding: ${props => (props.space ? "0.3rem" : "0")};
+
+  visibility: ${props => (props.visible ? "visible" : "hidden")};
+
+  @media (min-width: 576px) {
+    animation-name: grow, ${props => (props.animate ? "rubberBand" : undefined)};
+    animation-duration: 0.2s, 1s;
+    animation-delay: ${props => 0.1 * props.index}s, 0s;
+    animation-fill-mode: ease-in;
+    color: ${props => props.animate && props.color};
+  }
+
+  @keyframes grow {
+    from {
+      visibility: hidden;
+      transform: scale(0);
+      opacity: 0;
+    }
+
+    to {
+      visibility: visible;
+      transform: scale(1);
+      opacity: 1;
+    }
   }
 
   @keyframes rubberBand {

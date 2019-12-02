@@ -14,6 +14,9 @@ const GlobalStyle = createGlobalStyle`
 
     padding: 0;
     margin: 0;
+
+    user-select: none;
+
   }
 `;
 
@@ -24,5 +27,7 @@ export const colors = {
   notSelected: "#888",
 
   headerBackground: "#333",
-  background: "#4c4a4f"
+  background: "#4c4a4f",
+
+  letterColor: "#5CC8FF"
 };

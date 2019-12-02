@@ -1,16 +1,27 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+
 import { Container } from "./styles";
+import { colors } from "../../globalStyles";
 
-export default function Letter({ children }) {
+export default function Letter({ children, index }) {
   const [animate, setAnimate] = useState(false);
+  const [visible, setVisible] = useState(false);
 
-  return (
+  return children === "\n" ? (
+    <br />
+  ) : (
     <Container
       onMouseOver={() => setAnimate(true)}
-      onAnimationEnd={() => setAnimate(false)}
+      onAnimationEnd={() => {
+        setAnimate(false);
+        setVisible(true);
+      }}
       animate={animate}
-      color="#f55"
+      visible={visible}
+      space={children === " "}
+      color={colors.letterColor}
+      index={index}
     >
       {children}
     </Container>

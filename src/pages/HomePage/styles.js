@@ -9,10 +9,16 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: ${colors.background};
+
+  div {
+    h3 {
+      color: ${colors.notSelected};
+    }
+  }
 `;
 
 export const TextContainer = styled.div`
   width: 45vw;
   justify-content: center;
-  text-align: center;
+  text-align: left;
 `;
