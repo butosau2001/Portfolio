@@ -142,9 +142,11 @@ export default function MainPage() {
                   <Subtitle>{project.subtitle}</Subtitle>
                   <Description>{project.description}</Description>
                 </div>
-                <div className="image">
-                  <img src={project.image} alt="Portfolio" />
-                </div>
+                {project.image && (
+                  <div className="image">
+                    <img src={project.image} alt="Portfolio" />
+                  </div>
+                )}
                 <div className="link" onClick={() => window.open(project.link)}>
                   <Subtitle>
                     {project.link.includes("github")

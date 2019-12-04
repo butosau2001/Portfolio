@@ -9,6 +9,14 @@ const projects = [
     color: "#88f",
     aspectRatio: 2.2,
     image: require("../assets/portfolio.png")
+  },
+  {
+    id: 2,
+    title: "QTF",
+    subtitle: "Quanto tempo falta?",
+    description: "Aplicativo desenvolvido para cálculo de duração e metas",
+    link: "https://github.com/butosau2001/qtf",
+    color: "#fc2"
   }
 ];
 
