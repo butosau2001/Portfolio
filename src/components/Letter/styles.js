@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.span`
-  color: white;
+  color: ${props => props.defaultColor || "white"};
   font-size: 3rem;
   font-weight: bold;
   display: inline-block;

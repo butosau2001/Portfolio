@@ -9,16 +9,17 @@ export const Container = styled.div`
   align-items: center;
 
   background-color: ${colors.background};
-
-  div {
-    h3 {
-      color: ${colors.notSelected};
-    }
-  }
 `;
 
 export const TextContainer = styled.div`
   width: 45vw;
   justify-content: center;
   text-align: left;
+`;
+
+export const Submessage = styled.h3`
+  color: ${colors.notSelected};
+
+  opacity: ${props => (props.showMessage ? "1" : "0")};
+  transition: all 0.3s ease-in;
 `;

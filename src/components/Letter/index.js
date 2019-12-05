@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 
 import { Container } from "./styles";
-import { colors } from "../../globalStyles";
 
-export default function Letter({ children, index }) {
+export default function Letter({ children, color, defaultColor, index }) {
   const [animate, setAnimate] = useState(false);
   const [visible, setVisible] = useState(false);
 
@@ -20,7 +19,8 @@ export default function Letter({ children, index }) {
       animate={animate}
       visible={visible}
       space={children === " "}
-      color={colors.letterColor}
+      color={color}
+      defaultColor={defaultColor}
       index={index}
     >
       {children}
