@@ -3,6 +3,7 @@
   "short_name": "PF",
   "theme_color": "#494949",
   "background_color": "#888888",
+  "orientation": "portrait",
   "display": "standalone",
   "Scope": "/",
   "start_url": "/",
