@@ -6,15 +6,14 @@ import { Container } from "./styles";
 export default function Letter({ children, color, defaultColor, index }) {
   const [animate, setAnimate] = useState(false);
   const [visible, setVisible] = useState(false);
-
   return children === "\n" ? (
     <br />
   ) : (
     <Container
       onMouseOver={() => setAnimate(true)}
       onAnimationEnd={() => {
-        setAnimate(false);
         setVisible(true);
+        setAnimate(false);
       }}
       animate={animate}
       visible={visible}

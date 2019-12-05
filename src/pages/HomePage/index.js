@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Container, TextContainer, Submessage } from "./styles";
 
 import Letter from "../../components/Letter";
-import { colors } from "@material-ui/core";
+import { colors } from "../../globalStyles";
 
 export default function HomePage() {
   const [text] = useState("Olá,\nMeu nome é Bruno.");
@@ -18,7 +18,12 @@ export default function HomePage() {
       <div>
         <TextContainer>
           {text.split("").map((c, i) => (
-            <Letter key={String(i)} index={i} color={colors.letterColor}>
+            <Letter
+              key={String(i)}
+              index={i}
+              color={colors.letterColor}
+              defaultColor="white"
+            >
               {c}
             </Letter>
           ))}
