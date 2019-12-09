@@ -28,5 +28,8 @@ export default function Letter({ children, color, defaultColor, index }) {
 }
 
 Letter.propTypes = {
-  children: PropTypes.string.isRequired
+  children: PropTypes.string.isRequired,
+  color: PropTypes.string,
+  defaultColor: PropTypes.string,
+  index: PropTypes.number.isRequired
 };
